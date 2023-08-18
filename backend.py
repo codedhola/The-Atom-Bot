@@ -23,7 +23,8 @@ def register():
 
 
     # Check if user already exists
-    if username in users:
+    usernames = [u["username"] for u in users]
+    if username in usernames:
         return jsonify({"message": "User already exists!"}), 400
 
     users.append({
