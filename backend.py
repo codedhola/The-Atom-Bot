@@ -22,10 +22,6 @@ def get_user_by_id(username, password):
     return None  # Return None if no user is found
 
 
-
-
-
-
 @app.route('/register', methods=['POST']) #one endpoint/route
 def register():
     data = request.json
@@ -37,7 +33,7 @@ def register():
 
 
     # Check if user already exists
-    usernames = [u["username"] for u in users]
+    usernames = [u["username"] for u in users] #taking all usernames
     if username in usernames:
         return jsonify({"message": "User already exists!"}), 400
 
@@ -50,6 +46,12 @@ def register():
     })
 
     return jsonify({"message": "User registered successfully!"})
+
+
+
+@app.route('/', methods=['GET']) #one endpoint/route
+def home():
+    return jsonify({"message": "Hello there!"})
 
 
 @app.route('/login', methods=['GET']) #one endpoint/route
@@ -68,7 +70,7 @@ def login():
     user = get_user_by_id(username, password)
     if user is None:
        return jsonify({"message": "User not found or incorrect credentials."}), 400
-
+    print(user)
     return jsonify(user)
 
 
