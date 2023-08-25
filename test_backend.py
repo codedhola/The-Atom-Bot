@@ -17,10 +17,10 @@ payload = {
     'last_name': 'Doe'
 }
 
-# Make the POST request with JSON data
-response = requests.post(register_url, json=payload)
+# # Make the POST request with JSON data
+# response = requests.post(register_url, json=payload)
 
-print(response.text)
+# print(response.text)
 # response_data = json.loads(response.text)
 # print(response_data["message"])
 
@@ -29,15 +29,15 @@ print(response.text)
 payload = {
     'username': 'my_username',
     'password': 'my_password',
-    # 'first_name': 'John',
-    # 'last_name': 'Doe'
+    'first_name': 'John',
+    'last_name': 'Doe'
 }
 
 # Make the POST request with JSON data
-response = requests.get(login_url, json=payload)
+response = requests.post(register_url, json=payload)
 
 print(response.text)
 response_data = json.loads(response.text)
-user_id = response_data["id"]
 
-print(user_id)
+
+print(response_data)

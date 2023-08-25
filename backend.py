@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 import uuid
+from database import add_user
+import database
 
 app = Flask(__name__)
 
@@ -30,22 +32,16 @@ def register():
     first_name = data['first_name']
     last_name = data['last_name']
 
+    sucess = add_user(username,first_name, last_name, password)
+    if sucess == True:
+        user=database.login(username,password)
+        return jsonify(user)
+    
+    elif sucess==False:
+        return jsonify({"message": "error!"}), 400
 
 
-    # Check if user already exists
-    usernames = [u["username"] for u in users] #taking all usernames
-    if username in usernames:
-        return jsonify({"message": "User already exists!"}), 400
-
-    users.append({
-        'username': username,
-        'password': password,
-        'first_name':first_name,
-        'last_name':last_name,
-        'id': generate_unique_id()
-    })
-
-    return jsonify({"message": "User registered successfully!"})
+    
 
 
 
