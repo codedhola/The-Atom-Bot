@@ -55,20 +55,12 @@ def login():
     data = request.json
     username = data['username']
     password = data['password']
-   
-
-    # Check if user already exists
-    usernames = [u["username"] for u in users]
-    if username not in usernames:
-        return jsonify({"message": "User dont  exist!"}), 400
-
-    # Get user ID
-    user = get_user_by_id(username, password)
-    if user is None:
-       return jsonify({"message": "User not found or incorrect credentials."}), 400
-    print(user)
+    user=database.login(username,password)
+    if isinstance(user,str):
+        return jsonify({"message": user})
     return jsonify(user)
 
+    
 
 
 if __name__ == '__main__':
