@@ -29,9 +29,9 @@ def inventory():
     product_description = data['product_description']
     
 
-    sucess = add_product(product_name,product_price, product_description)
-    if sucess == True:   
+    success = add_product(product_name,product_price, product_description)
+    if success == True:   
         return jsonify(product_name)
     
-    elif sucess==False:
+    elif success==False:
         return jsonify({"message": "error!"}), 400

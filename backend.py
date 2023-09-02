@@ -32,12 +32,12 @@ def register():
     first_name = data['first_name']
     last_name = data['last_name']
 
-    sucess = add_user(username,first_name, last_name, password)
-    if sucess == True:
+    success = add_user(username,first_name, last_name, password)
+    if success == True:
         user=database.login(username,password)
         return jsonify(user)
     
-    elif sucess==False:
+    elif success==False:
         return jsonify({"message": "error!"}), 400
 
 
