@@ -4,7 +4,8 @@ import json
 # Specify the URL for the POST request
 register_url = 'http://127.0.0.1:5000/register'
 login_url = 'http://127.0.0.1:5000/login'
-
+#Solution to Assignment
+inventory_url = 'https://127.0.0.1:5000/inventory'
 
 
 
@@ -17,6 +18,13 @@ payload = {
     'last_name': 'Doe'
 }
 
+
+###Solution to Assignment
+payload = {
+    'product_name': 'ace_laptop',
+    'product_price': '$500',
+    'product_description': 'This is an ACE_Embedded Laptop'
+}
 # # Make the POST request with JSON data
 # response = requests.post(register_url, json=payload)
 
