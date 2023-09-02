@@ -16,6 +16,15 @@ class Users(Base):
     password = Column(String)  # Consider hashing before storing
 
 
+
+class Products(Base):
+    __tablename__ = 'products'
+    id = Column(String, primary_key=True, default=str(uuid.uuid4()), unique=True)
+    product_name = Column(String, unique=True)
+    product_price = Column(String)
+    product_description = Column(String)  # Consider hashing before storing
+
+
 # class Users(Base):
 #     __tablename__ = 'order'
 #     id = Column(String, primary_key=True, default=str(uuid.uuid4()), unique=True)
@@ -86,6 +95,32 @@ def login(email, password):
             return "Incorrect password"
     else:
         return "User not found"
+
+
+
+
+#### Solution to the Assignment.
+
+# Function to add a new Product
+def add_product(product_name, product_price, product_description):
+
+    try:
+        new_product = Products(product_name=product_name, product_price=product_price, product_description=product_description)
+        session.add(new_product)
+        session.commit()
+    except:
+        return False
+
+    return True
+
+
+# Function to get a Product by ID
+def get_product(product_id):
+    product = session.query(Products).filter_by(id=product_id).first()
+    return product
+
+
+
 # Examples
 
 # user = get_user('ef97426d-1128-4f06-9af1-3da88eeb3724')

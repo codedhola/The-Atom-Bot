@@ -6,6 +6,10 @@ register_url = 'http://127.0.0.1:5000/register'
 login_url = 'http://127.0.0.1:5000/login'
 
 
+#Solution to Assignment
+inventory_url = 'http://127.0.0.1:5000/inventory'
+
+
 
 
 ###REGISTER
@@ -32,6 +36,20 @@ payload = {
  #  'first_name': 'John',
 # 'last_name': 'Doe'
 }
+
+
+######Solution for the Assignment
+# Create a dictionary with the data you want to send
+payload = {
+    'product_name': 'ACE_LAPTOP',
+    'product_price': '$500',
+    'product_description': 'This is an ACE_Embedded Laptop'   
+}
+
+
+
+
+
 
 # Make the POST request with JSON data
 response = requests.get(login_url, json=payload)

@@ -29,7 +29,7 @@ def control_tool(camid, control):
 
 def send_control(camid: Optional[str]=None, control: Optional[str]=None) -> str:
     '''
-    a tool use to control cameras connected to the system, camid is the name or ID of the camera and the coontrol
+    a tool use to control cameras connected to the system, camid is the name or ID of the camera and the control
     should be a json with the key set to what needs to be controlled and the value to the new value 
     '''
     cam_id=(camid or "cam001")
